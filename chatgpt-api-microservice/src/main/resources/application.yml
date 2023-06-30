@@ -1,0 +1,9 @@
+spring:
+  application:
+    name: chat-gpt-api-microservice
+server:
+  port: 8081
+
+  eureka:
+    instance:
+      hostname: localhost
