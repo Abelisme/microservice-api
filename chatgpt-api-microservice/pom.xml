@@ -40,6 +40,23 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot</artifactId>
         </dependency>
+        <dependency>
+            <groupId>com.squareup.okhttp3</groupId>
+            <artifactId>okhttp</artifactId>
+            <version>4.9.0</version>
+        </dependency>
+<!--    DnsServerAddressStreamProviders
+        Unable to load io.netty.resolver.dns.macos.MacOSDnsServerAddressStreamProvider,
+        fallback to system defaults. This may result in incorrect DNS resolutions on MacOS.-->
+        <dependency>
+            <groupId>net.java.dev.jna</groupId>
+            <artifactId>jna</artifactId>
+            <version>5.8.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+        </dependency>
     </dependencies>
     <dependencyManagement>
         <dependencies>
