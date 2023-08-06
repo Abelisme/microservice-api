@@ -13,7 +13,7 @@ import java.io.IOException;
 import java.net.URL;
 
 @RestController
-@RequestMapping("/chatgpt-api")
+@RequestMapping("/api")
 public class ChatgptApiMicroServiceController {
     private static final String API_KEY = "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";
     private static final String API_URL = "https://api.openai.com/v1/chat/completions";

@@ -12,6 +12,7 @@
 
     <groupId>com.example.will</groupId>
     <artifactId>chatgpt-api-microservice</artifactId>
+    <packaging>jar</packaging>
 
     <properties>
         <maven.compiler.source>11</maven.compiler.source>
@@ -70,6 +71,7 @@
         </dependencies>
     </dependencyManagement>
     <build>
+        <finalName>chatgpt-api</finalName>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>

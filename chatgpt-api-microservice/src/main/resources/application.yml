@@ -1,9 +1,15 @@
 spring:
   application:
-    name: chat-gpt-api-microservice
+    name: chatgpt-api-microservice
 server:
   port: 8081
 
   eureka:
-    instance:
-      hostname: localhost
+#    instance:
+#      hostname: chat-gpt-api-microservice
+#    prefer-ip-address: true
+    client:
+      serviceUrl:
+        register-with-eureka: true
+        fetch-registry: true
+        defaultZone: http://serviceregistry:8761/eureka/
