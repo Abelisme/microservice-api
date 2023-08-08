@@ -1,0 +1,23 @@
+spring:
+  application:
+    name: service-two
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://service-two-db/service-two?createDatabaseIfNotExist=true
+    username: service-two
+    password: service-two
+  jpa:
+    hibernate:
+      ddl-auto: create
+      naming-strategy: org.hibernate.cfg.ImprovedNamingStrategy
+    properties.hibernate.dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+    show-sql: true
+server:
+  port: 8082
+  eureka:
+    client:
+      serviceUrl:
+        register-with-eureka: true #?????
+        fetch-registry: true #?????
+        defaultZone: http://serviceregistry:8761/eureka/ #??eureka server??
+

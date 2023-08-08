@@ -33,7 +33,7 @@ services:
 #    hostname: 'chatgpt-api-microservice'
     build: chatgpt-api-microservice/
     ports:
-      - "8001:8001"
+      - "8081:8081"
     environment:
       - eureka.client.service-url.defaultZone=http://serviceregistry:8761/eureka
 #    expose:
@@ -44,6 +44,41 @@ services:
 #      - eureka-server
     depends_on:
       - serviceregistry
+
+  # ---------------------------
+  # Service Two Database
+  # ---------------------------
+  service-two-db:
+#    container_name: "service-two-db"
+#    hostname: "servicetwodb"
+    image: "mysql/mysql-server:latest"
+    platform: linux/arm64/v8
+    environment:
+      - MYSQL_ROOT_PASSWORD=root123
+      - MYSQL_DATABASE=service-two
+      - MYSQL_USER=service-two
+      - MYSQL_PASSWORD=service-two
+    ports:
+      - "3306:3306"
+    expose:
+      - "3306"
+    networks:
+      - backend
+
+  # ---------------------------
+  # Service Two
+  # ---------------------------
+  service-two:
+    build: service-two/
+    ports:
+      - "8082:8082"
+    environment:
+      - eureka.client.service-url.defaultZone=http://serviceregistry:8761/eureka
+    networks:
+      - backend
+    depends_on:
+      - serviceregistry
+      - service-two-db
 
 networks:
   backend:

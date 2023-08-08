@@ -10,6 +10,6 @@ server:
 #    prefer-ip-address: true
     client:
       serviceUrl:
-        register-with-eureka: true
-        fetch-registry: true
-        defaultZone: http://serviceregistry:8761/eureka/
+        register-with-eureka: true #確保會註冊
+        fetch-registry: true #確保會註冊
+        defaultZone: http://serviceregistry:8761/eureka/ #對照eureka server路徑

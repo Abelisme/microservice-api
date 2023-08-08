@@ -26,5 +26,6 @@
     <module>gateway-api</module>
     <module>chatgpt-api-microservice</module>
     <module>eureka-server</module>
+      <module>service-two</module>
   </modules>
 </project>

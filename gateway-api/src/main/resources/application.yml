@@ -23,7 +23,8 @@ spring:
           uri: lb://chatgpt-api-microservice
           predicates:
             - Path=/api/**
-#        - id: second-microservice
+        - id: service-two
 #          uri: http://localhost:8082/
-#          predicates:
-#            - Path=/second/**
+          uri: lb://service-two
+          predicates:
+            - Path=/second/**
