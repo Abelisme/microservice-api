@@ -1,16 +1,12 @@
 package com.example.will.controller;
+
+import com.example.will.http.okhttp.OkHttpAuthClient;
 import com.example.will.model.GptParmeter;
-import okhttp3.*;
+import okhttp3.MediaType;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.web.bind.annotation.*;
 
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.ResponseBody;
-
-import javax.net.ssl.HttpsURLConnection;
 import javax.servlet.http.HttpServletRequest;
-import java.io.IOException;
-import java.net.URL;
 
 @RestController
 @RequestMapping("/api")
@@ -26,8 +22,6 @@ public class ChatgptApiMicroServiceController {
     @RequestMapping(value="/call", method= RequestMethod.POST)
     @ResponseBody
     public String call(HttpServletRequest httpServletRequest, @RequestBody GptParmeter gptParmeter) {
-        OkHttpClient client = new OkHttpClient();
-
         MediaType JSON = MediaType.parse("application/json; charset=utf-8");
         String jsonBody = "{\"role\":\"assistant\", \"content\":\"Translate the following English text to French: '{hi men you are such nice person}'\",\"max_tokens\":60}";
 //        jsonBody = "{\"model\": \"gpt-3.5-turbo\",\"messages\": [{\"role\": \"assistant\", \"content\": \"Translate the following English text to French: '{hi men you are such nice person}'\"}, {\"role\": \"user\", \"content\": \"Hello!\"}]}";
@@ -40,23 +34,9 @@ public class ChatgptApiMicroServiceController {
         }
         jsonBody = "{\"model\": \"" + model + "\",\"messages\": [{\"role\": \"" + role +"\", \"content\": \"" + contents + "\"}]}";
 
-        okhttp3.RequestBody body = okhttp3.RequestBody.create(jsonBody, JSON);
+        OkHttpAuthClient okHttpAuthClient = new OkHttpAuthClient();
+        String result = okHttpAuthClient.doPost(JSON, jsonBody, API_URL, API_KEY);
 
-        Request request = new Request.Builder()
-                .url(API_URL)
-                .addHeader("Content-Type", "application/json")
-                .addHeader("Authorization", "Bearer " + API_KEY)
-                .post(body)
-                .build();
-
-        try (Response response = client.newCall(request).execute()) {
-            //response.body() 在okhttp中，response只能被调用一次。
-            String result = response.body().string();
-            System.out.println(result);
-
-            return result;
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+        return result;
     }
 }

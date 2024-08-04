@@ -2,14 +2,15 @@
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
-  <groupId>org.example.will</groupId>
+  <groupId>com.example.will</groupId>
   <artifactId>microservice-api</artifactId>
-  <version>1.0-SNAPSHOT</version>
+  <version>1.0.0</version>
   <packaging>pom</packaging>
 
   <name>microservice-api</name>
   <url>http://maven.apache.org</url>
 
+  <!-- spring-boot-starter-parent包含了大量配置好的依賴管理，在自己項目添加這些依賴的時候不需要寫<version>版本號 -->
   <parent>
     <groupId>org.springframework.boot</groupId>
     <artifactId>spring-boot-starter-parent</artifactId>
@@ -20,12 +21,33 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
     <java.version>11</java.version>
+    <maven.compiler.source>11</maven.compiler.source>
+    <maven.compiler.target>11</maven.compiler.target>
+    <spring-cloud.version>2021.0.0</spring-cloud.version>
+    <commons-lang3-version>3.2.1</commons-lang3-version>
+    <commons-collections4-version>4.4</commons-collections4-version>
+    <httpclient-version>4.5.13</httpclient-version>
+    <gson-version>2.9.0</gson-version>
+    <okhttp-version>4.9.0</okhttp-version>
+    <logback-version>1.2.10</logback-version>
+    <logback-ext-loggly-version>0.1.5</logback-ext-loggly-version>
+    <logback-jackson-version>0.1.5</logback-jackson-version>
+    <logback-json-classic-version>0.1.5</logback-json-classic-version>
+    <log4j2.version>2.17.1</log4j2.version>
+    <org-slf4j-version>1.7.36</org-slf4j-version>
+
+    <grpc-spring-boot-starter.version>2.13.1.RELEASE</grpc-spring-boot-starter.version>
+    <protobuf.version>3.21.7</protobuf.version>
+    <protoc.version>3.21.7</protoc.version>
+    <grpc.version>1.51.0</grpc.version>
   </properties>
 
   <modules>
     <module>gateway-api</module>
     <module>chatgpt-api-microservice</module>
     <module>eureka-server</module>
-      <module>service-two</module>
+    <module>service-two</module>
+    <module>spring-boot-mail</module>
+    <module>common</module>
   </modules>
 </project>
