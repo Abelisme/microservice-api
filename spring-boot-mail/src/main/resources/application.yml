@@ -1,0 +1,66 @@
+spring:
+  application:
+    name: spring-boot-mail
+  cloud:
+    config:
+      enabled: false
+    discovery:
+      client:
+        serviceUrl:
+          defaultZone: http://eureka-server-url/eureka/
+  datasource:
+    url: jdbc:mysql://localhost:3306/mail?useUnicode=true&characterEncoding=utf-8&useSSL=false&allowMultiQueries=true&serverTimezone=UTC&allowPublicKeyRetrieval=true
+    username: root
+    password: xxx
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  #  改成@Configuration
+  #  mail:
+  #    host: smtp.qq.com
+  #    port: 587
+  #    username: your-username
+  #    password: your-password
+  #    properties:
+  #      mail:
+  #        smtp:
+  #          auth: true
+  #          starttls:
+  #            enable: true
+  #            required: true
+  # Redis
+  # 數據庫索引（默認為0）
+  activemq:
+    broker-url: tcp://localhost:61616
+    user: artemis
+    password: artemis
+  redis:
+    database: 0
+    # 主機地址，替換為你的實際地址
+    host: localhost
+    # 端口號
+    port: 6379
+    # 密碼（默認為空，如果有設置請替換為實際密碼）
+    password: your_redis_password
+    # Lettuce連接池配置
+    lettuce:
+      pool:
+        # 最大活躍連接數
+        max-active: 8
+        # 最大等待時間（-1表示無限等待）
+        max-wait: -1ms
+        # 最大空閑連接數
+        max-idle: 8
+    # 連接超時時間（單位：毫秒）
+    timeout: 30000
+
+server:
+  port: 8083
+  path: http://localhost:8083
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+
+#kafka:
+#  bootstrap-servers: kafka-server:9092
+#  consumer:
+#    group-id: group-id
