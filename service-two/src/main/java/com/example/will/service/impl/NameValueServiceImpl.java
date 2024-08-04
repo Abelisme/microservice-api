@@ -8,6 +8,7 @@ import com.example.will.service.NameValueService;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
@@ -62,6 +63,7 @@ public class NameValueServiceImpl implements NameValueService {
   }
 
   @Override
+  @Cacheable(value = "name_value")
   public AllNameValueTO getAllNameValues(String name) {
     Iterable<NameValue> nameValues = nameValueRepository.findAll();
     AllNameValueTO allNameValueTO = new AllNameValueTO();
