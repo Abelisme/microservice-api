@@ -3,7 +3,6 @@ spring:
     name: chatgpt-api-microservice
 server:
   port: 8081
-
   eureka:
 #    instance:
 #      hostname: chat-gpt-api-microservice
@@ -13,3 +12,6 @@ server:
         register-with-eureka: true #確保會註冊
         fetch-registry: true #確保會註冊
         defaultZone: http://serviceregistry:8761/eureka/ #對照eureka server路徑
+grpc:
+  server:
+    port: 9090

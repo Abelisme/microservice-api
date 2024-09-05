@@ -9,7 +9,8 @@ eureka:
     serviceUrl:
       register-with-eureka: true
       fetch-registry: true
-      defaultZone: http://serviceregistry:8761/eureka/
+#      defaultZone: http://serviceregistry:8761/eureka/
+#      defaultZone: http://localhost:8761/eureka/
 spring:
 #  main:
 #    web-application-type: reactive
@@ -19,12 +20,17 @@ spring:
     gateway:
       routes:
         - id: chatgpt-api-microservice
-#          uri: http://localhost:8081/
-          uri: lb://chatgpt-api-microservice
+          uri: http://localhost:8081/
+#          uri: lb://chatgpt-api-microservice
           predicates:
             - Path=/api/**
         - id: service-two
-#          uri: http://localhost:8082/
-          uri: lb://service-two
+          uri: http://localhost:8082/
+#          uri: lb://service-two
           predicates:
             - Path=/second/**
+        - id: mail
+          uri: http://localhost:8083/
+#          uri: lb://mail
+          predicates:
+            - Path=/mail/**

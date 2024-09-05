@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+option java_package = "com.example.will.grpc";
+option java_outer_classname = "UserProto";
+
+package user;
+
+service UserService {
+  rpc GetUser (UserRequest) returns (UserResponse) {}
+}
+
+message UserRequest {
+  int64 id = 1;
+}
+
+message UserResponse {
+  int64 id = 1;
+  string name = 2;
+}
