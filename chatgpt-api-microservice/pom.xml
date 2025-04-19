@@ -87,12 +87,23 @@
             <artifactId>grpc-services</artifactId>
             <version>${grpc.version}</version>
         </dependency>
-
         <!-- Protobuf -->
         <dependency>
             <groupId>com.google.protobuf</groupId>
             <artifactId>protobuf-java</artifactId>
             <version>${protobuf.version}</version>
+        </dependency>
+        <!-- Jsoup -->
+        <dependency>
+            <groupId>org.jsoup</groupId>
+            <artifactId>jsoup</artifactId>
+            <version>1.14.3</version>
+        </dependency>
+        <!-- Flying Saucer PDF -->
+        <dependency>
+            <groupId>org.xhtmlrenderer</groupId>
+            <artifactId>flying-saucer-pdf</artifactId>
+            <version>9.1.22</version>
         </dependency>
     </dependencies>
     <dependencyManagement>
